@@ -5,7 +5,7 @@ const Items = ({ item }) => {
     console.log('item', item.title)
     return (
         <ItemContainer>
-            {/* <img src={item.picture} alt="" />
+            <img src={item.picture} alt="" />
             <div>
                 <p>{item.title}</p>
                 <p>title</p>
@@ -14,10 +14,9 @@ const Items = ({ item }) => {
             <div>
                 <p>{item.location}</p>
             </div>
-            <p>{item.title}</p> */}
-            <p>AYUDA</p>
+            <p>{item.title}</p>
+            
         </ItemContainer>
-        //<p>{item.title}</p>
     )
 }
 
