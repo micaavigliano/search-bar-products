@@ -15,7 +15,6 @@ const Items = ({ item }) => {
                 <p>{item.location}</p>
             </div>
             <p>{item.title}</p>
-            
         </ItemContainer>
     )
 }
