@@ -25,17 +25,10 @@ exports.getItems = (query) => {
                   freeShipping: item.shipping.free_shipping,
                   location: item.address.state_name,
                 };
-              });
-        
-            //   const categories = !_.isEmpty(res.data.filters)
-            //     ? res.data.filters[0].values[0].path_from_root.map(
-            //         (value) => value.name
-            //       )
-            //     : [];
+              }); 
         
               return {
                 author,
-                //categories,
                 items,
               };
             })
@@ -69,10 +62,7 @@ exports.getItemsDetails = async(query) => {
         description: description.data.plain_text,
       };
   
-      return [
-        author,
-        itemDetails,
-      ];
+      return itemDetails;
     } catch (error) {
       console.log(error);
     }

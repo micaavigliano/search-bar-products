@@ -9,7 +9,6 @@ const List = ({items}) => {
             {items.length > 0 && items.map((item, id) => {
                 return <Items item={item} key={id} />
             })}
-            <p>AHHHHH</p>
         </ListContainer>
     )
 }
@@ -20,7 +19,7 @@ const ListContainer = styled.li`
     align-items: center;
     margin: auto;
     padding: auto;
-    background-color: purple;
+    background-color: grey;
     width: 70%;
     height: auto;
     list-style: none;

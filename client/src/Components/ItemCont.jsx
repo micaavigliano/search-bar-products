@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import {useHistory} from 'react-router-dom'
+import React, { useState, useCallback } from 'react';
+import { useHistory, Switch, Route } from 'react-router-dom'
 import axios from 'axios'
 //componentes
 import Searchbar from './SearchBar';
 import List from './List';
+import ItemDetails from './ItemDetails';
 
 const ItemCont = () => {
     let history = useHistory();
@@ -25,7 +26,7 @@ const ItemCont = () => {
               setLoading(false);
               setResults(true);
               setItemsListResults(response.data.items);
-              console.log(response.data.items)
+              console.log(response.data)
               history.push(`/items?search=${query}`);
             }
           } catch (error) {
@@ -33,7 +34,7 @@ const ItemCont = () => {
             setItemsListResults(error);
           }
         },
-        [history, setResults]
+        [setResults]
       );
 
     const handleSearch = useCallback((query) => {
@@ -47,8 +48,14 @@ const ItemCont = () => {
       <div>
         <Searchbar onSubmit={(query) => handleSearch(query)}/>
         {
-          loading ? (<p>Loading</p>) : results ? (<List  items={itemsListResults}/>) : null
-        }
+          loading ? (<p>Loading</p>) : (
+            <Switch>
+              <Route exact path="/items">
+                {results && <List items={itemsListResults}/>}
+              </Route>
+              <Route  path="/items/:id" component={ItemDetails}/>
+            </Switch>
+          )}
       </div>
     )
 }
